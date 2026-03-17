@@ -1,6 +1,7 @@
 package com.biblioteca.biblioteca.modelo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class Autor {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombreCompleto;
 
     private String paisOrigen;
