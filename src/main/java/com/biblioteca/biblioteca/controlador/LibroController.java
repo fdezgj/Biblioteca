@@ -25,8 +25,28 @@ public class LibroController {
         return libroService.listar();
     }
 
-    @GetMapping("/genero/{genero}")
-    public List<LibroConceptual> porGenero(@PathVariable String genero) {
-        return libroService.buscarPorGenero(genero);
+    @GetMapping("/{isbn}")
+    public LibroConceptual obtener(@PathVariable String isbn) {
+        return libroService.buscarPorId(isbn)
+                .orElseThrow(() -> new RuntimeException("Libro no encontrado"));
+    }
+
+    @PutMapping("/{isbn}")
+    public LibroConceptual actualizar(@PathVariable String isbn,
+                                      @Valid @RequestBody LibroConceptual libro) {
+
+        LibroConceptual existente = libroService.buscarPorId(isbn)
+                .orElseThrow(() -> new RuntimeException("Libro no encontrado"));
+
+        existente.setTituloObra(libro.getTituloObra());
+        existente.setGenero(libro.getGenero());
+        existente.setAnioPublicacion(libro.getAnioPublicacion());
+
+        return libroService.guardar(existente);
+    }
+
+    @DeleteMapping("/{isbn}")
+    public void eliminar(@PathVariable String isbn) {
+        libroService.eliminar(isbn);
     }
 }
