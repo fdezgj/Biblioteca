@@ -1,6 +1,6 @@
 services:
   # =====================================================
-  # Servicio 1: La aplicacion Spring Boot (pizzeria)
+  # Servicio 1: La aplicacion Spring Boot (Biblioteca)
   # =====================================================
   app:
     build: .
