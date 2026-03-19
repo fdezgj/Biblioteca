@@ -2,6 +2,7 @@ package com.biblioteca.biblioteca.controlador;
 
 import com.biblioteca.biblioteca.modelo.LibroConceptual;
 import com.biblioteca.biblioteca.servicio.LibroService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/libros")
 @RequiredArgsConstructor
+@Tag(name = "Libros")
 public class LibroController {
 
     private final LibroService libroService;

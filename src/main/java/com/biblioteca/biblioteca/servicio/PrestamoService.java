@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,8 @@ public class PrestamoService {
         // 1. Buscar socio
         SocioLector socio = socioRepository.findById(socioId)
                 .orElseThrow(() -> new RuntimeException("Socio no encontrado"));
+
+
 
         // 2. Buscar ejemplar
         EjemplarLibro ejemplar = ejemplarRepository.findById(ejemplarId)
@@ -51,6 +54,11 @@ public class PrestamoService {
         // 6. Guardar préstamo
         return prestamoRepository.save(prestamo);
     }
+
+    public List<PrestamoActivo> buscarPorSocio(Long socioId) {
+        return prestamoRepository.findBySocioId(socioId);
+    }
+
     @Transactional
     public void devolverLibro(Long prestamoId) {
 

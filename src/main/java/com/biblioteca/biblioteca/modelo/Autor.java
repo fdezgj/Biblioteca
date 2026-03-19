@@ -26,7 +26,7 @@ public class Autor {
 
     private String paisOrigen;
 
-    @ManyToMany(mappedBy = "autores")
-    private List<LibroConceptual> libros;
+    //@ManyToMany(mappedBy = "autores")
+    //private List<LibroConceptual> libros;
 
 }
